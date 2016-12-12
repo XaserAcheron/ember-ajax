@@ -11,6 +11,7 @@ import {
   ForbiddenError,
   BadRequestError,
   ServerError,
+  AbortError,
   isTimeoutError
 } from 'ember-ajax/errors';
 import Pretender from 'pretender';
@@ -943,6 +944,7 @@ describe('Unit | Mixin | ajax request', function() {
     errorHandlerTest(500, ServerError);
     errorHandlerTest(502, ServerError);
     errorHandlerTest(510, ServerError);
+    errorHandlerTest(0, AbortError);
   });
 
   describe('Custom waiter', function() {
