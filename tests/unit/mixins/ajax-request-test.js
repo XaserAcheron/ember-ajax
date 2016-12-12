@@ -867,10 +867,10 @@ describe('Unit | Mixin | ajax request', function() {
     expect(isNaN(payloadWithNaN)).to.be.ok;
 
     const payloadWithNull = service.handleResponse(200, {}, null);
-    expect(payloadWithNull).to.be.deep.equal({});
+    expect(payloadWithNull).to.be.null;
 
     const payloadWithUndefined = service.handleResponse(200, {}, undefined);
-    expect(payloadWithUndefined).to.be.deep.equal({});
+    expect(payloadWithUndefined).to.be.undefined;
   });
 
   describe('JSONP Requests', function() {
