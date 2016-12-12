@@ -873,6 +873,21 @@ describe('Unit | Mixin | ajax request', function() {
     expect(payloadWithUndefined).to.be.undefined;
   });
 
+  it('correctly handles an empty string response', function() {
+    this.server.get('/test', function() {
+      return [
+        200,
+        { 'content-type': 'application/json' },
+        ''
+      ];
+    });
+
+    const service = new AjaxRequest();
+    return service.request('/test').then((response) => {
+      expect(response).to.be.empty;
+    });
+  });
+
   describe('JSONP Requests', function() {
     it('should make JSONP requests', function() {
       this.server.get('/jsonp', function(req) {
